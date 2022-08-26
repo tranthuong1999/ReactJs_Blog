@@ -4,10 +4,10 @@ import React ,{ useRef } from 'react'
 import { useForm } from "react-hook-form";
 import { useHistory  } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../redux/api';
-
+import { loginUser } from '../../redux/api';
 import Button from '@mui/material/Button';
 import './styles.css'
+import { VALIDATOR } from '../../constants/untils';
 
 export default function Login() {
 
@@ -38,7 +38,12 @@ export default function Login() {
     <form onSubmit={handleSubmit(handleLogin)}>
 
       <label>Email</label>
-      <input {...register("email", { pattern:  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
+      <input {...register("email", 
+      {
+         pattern:VALIDATOR.email 
+        })
+      } 
+      />
       {errors?.email?.type === "pattern" && (
         <p>Email is Invalid</p>
       )}

@@ -4,14 +4,19 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
+import NavBar from './components/NavBar';
+import Post from './components/Post';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
-    <div className="wrapper">
-      {/* <h1>Application Blog </h1> */}
+    <div>
       <BrowserRouter>
         <Switch>
-        <Route path="/home">
+        <Route exact path="/">
+            <NavBar />
+          </Route>
+        <Route  path="/home">
             <Home />
           </Route>
           <Route path="/login">
@@ -20,7 +25,12 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-         
+          <Route path="/post">
+            <Post />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
         </Switch>
       </BrowserRouter>
     </div>

@@ -108,7 +108,7 @@
   button[type="button"] {
     display: block;
     appearance: none;
-    background: #333;
+    /* background: #333; */
     color: white;
     border: none;
     text-transform: uppercase;
@@ -145,5 +145,4 @@
   }
   .register:hover{
     background-color: black !important;
-
   }

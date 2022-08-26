@@ -1,0 +1,17 @@
+
+
+button[type="button"] {
+    display: block;
+    appearance: none;
+    background: rgb(0 0 0 / 4%);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+
+  .container{
+    background-color: white;
+    height: 100vh;
+  }

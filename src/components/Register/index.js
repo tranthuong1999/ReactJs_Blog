@@ -5,14 +5,16 @@ import { useForm } from "react-hook-form";
 import "./styles.css";
 import { useDispatch , useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { registerUser } from '../redux/api';
-
+import { registerUser } from '../../redux/api';
+import { VALIDATOR } from '../../constants/untils';
 
 
 
 export default function Register() {
     const history = useHistory();
     const dispatch = useDispatch();
+
+
 
     const {
         register,
@@ -24,15 +26,12 @@ export default function Register() {
  const handleRegister = (data) => {
 
   const newUser={
-    firstName: data.firstName,
+        firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
         password: data.password,
-    
   }
-
 registerUser(newUser , dispatch , history)
-
 }; 
 
 
@@ -63,7 +62,7 @@ registerUser(newUser , dispatch , history)
 
 
       <label>Email</label>
-      <input {...register("email", { pattern:  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })} />
+      <input {...register("email", { pattern: VALIDATOR.email })} />
       {errors?.email?.type === "pattern" && (
         <p>Email is Invalid</p>
       )}
