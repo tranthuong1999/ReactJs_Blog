@@ -1,6 +1,7 @@
 
 
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice ,createAsyncThunk  } from "@reduxjs/toolkit";
+
 
 const authSLice = createSlice({
     name :'auth',
@@ -17,7 +18,7 @@ const authSLice = createSlice({
         }
     },
     reducers: {
-
+        
         loginStart : (state) =>{
             state.login.isFetching = true;
         },

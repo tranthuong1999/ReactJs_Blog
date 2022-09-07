@@ -146,3 +146,6 @@
   .register:hover{
     background-color: black !important;
   }
+  input{
+    color:black !important;
+  }

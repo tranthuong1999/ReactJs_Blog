@@ -6,7 +6,7 @@ import "./styles.css";
 import { useDispatch , useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { registerUser } from '../../redux/api';
-import { VALIDATOR } from '../../constants/untils';
+import { VALIDATOR } from '../../constants/utils';
 
 
 

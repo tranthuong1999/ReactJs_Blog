@@ -1,38 +1,31 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-import { useSelector , useDispatch } from 'react-redux'
-import { useHistory  } from "react-router-dom";
-import { getBlog } from '../../redux/api';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
 
-import './styles.css'
-
+import "./styles.css";
+import { getPostPublic } from "../../redux/api";
 
 export default function Home() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    getPostPublic(dispatch);
+  }, []);
 
-  useEffect( () =>{
-    const checkToken =  sessionStorage.getItem('user')
-        if(!checkToken){
-        history.push('/login')
-  }
-  getBlog(dispatch)
+  const listPost = useSelector((state) => state.posts.content);
 
-  },[])
-
-  const listPost = useSelector( state => state.posts.content)
-
-  console.log("List post" , listPost)
+  console.log("List post pulic", listPost);
 
   return (
-    <div className='container'>
-      <Card sx={{ maxWidth: 345 }}>
+    <div className="container">
+      {/* <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -44,7 +37,8 @@ export default function Home() {
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
+    </Card> */}
+      <h1 style={{ color: "red" }}> Post public </h1>
     </div>
-  )
+  );
 }
