@@ -6,7 +6,8 @@ import {
   registerSuccess,
   registerFail,
 } from "./authSlice";
-import { listPost, listPostPrivate, postPrivate } from "./postSlice";
+
+import { listPostPublic, listPostPrivate, postPrivate } from "./postSlice";
 import axios from "axios";
 
 const BASE_URL = "http://127.0.0.1:3001";
@@ -21,10 +22,9 @@ export const loginUser = async (user, dispatch, history) => {
     });
     const data = await res.json();
     console.log("data respone", data);
-    sessionStorage.setItem("user", data.data.accessToken);
+    localStorage.setItem("user", data.data.accessToken);
     dispatch(loginSuccess(data.data));
     history.push("/post");
-    alert("Login success");
   } catch (err) {
     dispatch(loginFail());
     alert("Login failed");
@@ -54,7 +54,7 @@ export const getPostPublic = async (dispatch) => {
   try {
     const res = await fetch(`${BASE_URL}/api/posts`);
     const data = await res.json();
-    dispatch(listPost(data.data));
+    dispatch(listPostPublic(data.data));
   } catch (err) {
     console.log("Error ---", err);
   }
@@ -86,6 +86,21 @@ export const getPostPrivate = async (token, dispatch, id) => {
       console.log("Data get post---------", res.data.data);
 
       dispatch(postPrivate(res.data.data));
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
+export const deletePostPrivate = async (id, token) => {
+  axios
+    .delete(`${BASE_URL}/api/posts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      console.log("Delete Success---------");
     })
     .catch((error) => {
       console.error(error);

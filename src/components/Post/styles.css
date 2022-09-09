@@ -2,22 +2,56 @@
 
 .container{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
   flex-grow: 1;
   flex-wrap: wrap;
-  width: 1350px;
-  row-gap: 10px;
-  padding: 10px 20px;
+  width: 1200px;
+  /* row-gap: 40px; */
 }
 
+
+.post{
+  background-color: red !important;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  margin-left: 25px;
+}
+
+h2 , h3, h4{
+  margin-top: 10px !important;
+}
 .content{
   background-color:rgb(210, 217, 229);
-  margin-left: 10px;
-  padding-bottom: 130px;
   height: 200px;
-  width: 400px;
   overflow: hidden;
+  margin-top: -20px;
 }
-.btn-detatil{
+.button{
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  margin-top: 40px;
+  margin-bottom: 0px;
+}
+
+
+
+.btn-detail{
+  background-color: green !important;
+  flex-grow: 1;
+  margin: 0px 4px !important;
+
+}
+.btn-delete{
   background-color: red !important;
+  flex-grow: 1;
+  margin-right: 2px !important;  
+}
+.btn-edit-post{
+  flex-grow: 1;
+  background-color:#333 !important;
+  margin: 0px 4px !important;
+
 }

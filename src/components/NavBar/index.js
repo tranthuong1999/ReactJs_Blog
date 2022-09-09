@@ -9,19 +9,10 @@ import { useHistory } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./style.css";
 
-import { useSelector, useDispatch } from "react-redux";
-
 export default function NavBar() {
   const history = useHistory();
-  const dispatch = useDispatch();
 
-  const user = sessionStorage?.getItem("user");
-
-  useEffect(() => {
-    if (!user) {
-      history.push("/login");
-    }
-  }, []);
+  const user = localStorage?.getItem("user");
 
   return (
     <div>

@@ -5,10 +5,10 @@ const postSlice = createSlice({
   initialState: {
     content: [],
     postsPrivate: [],
-    post: [],
+    post: null,
   },
   reducers: {
-    listPost: (state, action) => {
+    listPostPublic: (state, action) => {
       //   console.log("state----", state);
       //   console.log("action----", action);
       state.content.push(action.payload);
@@ -17,18 +17,21 @@ const postSlice = createSlice({
     listPostPrivate: (state, action) => {
       console.log("state listPostPrivate----", state);
       console.log("action listPostPrivate----", action);
-      
+
       state.postsPrivate.push(action.payload);
     },
     postPrivate: (state, action) => {
-      //   console.log("state----", state);
-      //   console.log("action----", action);
+      // console.log("state postPrivate----", state);
+      // console.log("action postPrivate----", action);
+      // cons
+      console.log("action postPrivate----", action.payload);
 
-      state.post.push(action.payload);
+      state.post = action.payload;
     },
   },
 });
 
-export const { listPost, listPostPrivate, postPrivate } = postSlice.actions;
+export const { listPostPublic, listPostPrivate, postPrivate } =
+  postSlice.actions;
 
 export default postSlice.reducer;

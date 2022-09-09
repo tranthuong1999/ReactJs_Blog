@@ -19,4 +19,22 @@
   label{
     color: black !important;
   }
+  .btn-update-post{
+
+    background-color: green !important;
+    margin-top: -15px !important;
+    margin-left: 200px !important;
+    letter-spacing: 1px !important;
+
+  }
+  .btn-add-post{
+    background-color: #006ce7 !important;
+    margin-top: -15px !important;
+    margin-left: 200px !important;
+    letter-spacing: 1px !important;
+  }
+  .radio-post{
+    margin-top: -18px;
+  margin-bottom: -37px;
+  }
   
