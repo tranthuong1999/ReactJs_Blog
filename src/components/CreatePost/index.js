@@ -15,9 +15,6 @@ const BASE_URL = "http://127.0.0.1:3001";
 
 export default function Post(props) {
   const currentPostUpdate = props?.location?.state;
-
-  // console.log("currentPostUpdate", currentPostUpdate?.private);
-
   const id = currentPostUpdate?.id;
   const dispatch = useDispatch();
   const [content, setContent] = useState(currentPostUpdate?.content || "");
@@ -89,7 +86,7 @@ export default function Post(props) {
     }
   };
 
-  const handleChange = (content) => {
+  const handleChangeContent = (content) => {
     if (content.length > 0) {
       setContentErr("");
     }
@@ -149,7 +146,7 @@ export default function Post(props) {
           height: 200,
           menubar: false,
         }}
-        onEditorChange={handleChange}
+        onEditorChange={handleChangeContent}
       />
       <p> {contentErr}</p>
       <br />

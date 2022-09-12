@@ -15,7 +15,7 @@ export default function Home() {
     getPostPublic(dispatch);
   }, []);
 
-  const listPostPublic = useSelector((state) => state.posts.content);
+  const listPostPublic = useSelector((state) => state.posts.postPublic);
 
   console.log("List post pulic", listPostPublic);
 
@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <div className="container">
-      {listPostPublic[0]?.map((postPublic, index) => {
+      {listPostPublic?.map((postPublic, index) => {
         console.log("Post public", postPublic);
 
         return (

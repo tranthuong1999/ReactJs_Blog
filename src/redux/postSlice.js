@@ -3,35 +3,31 @@ import { createSlice } from "@reduxjs/toolkit";
 const postSlice = createSlice({
   name: "post",
   initialState: {
-    content: [],
+    postPublic: [],
     postsPrivate: [],
     post: null,
   },
   reducers: {
     listPostPublic: (state, action) => {
-      //   console.log("state----", state);
-      //   console.log("action----", action);
-      state.content.push(action.payload);
+      state.postPublic = [...action.payload];
     },
 
     listPostPrivate: (state, action) => {
-      console.log("state listPostPrivate----", state);
-      console.log("action listPostPrivate----", action);
-
-      state.postsPrivate.push(action.payload);
+      state.postsPrivate = [...action.payload];
     },
     postPrivate: (state, action) => {
-      // console.log("state postPrivate----", state);
-      // console.log("action postPrivate----", action);
-      // cons
-      console.log("action postPrivate----", action.payload);
-
       state.post = action.payload;
+    },
+    deleteOnePost: (state, action) => {
+      console.log("action deleteOnePost", action);
+      state.postsPrivate = state.postsPrivate.filter(
+        (post) => post.id !== action.payload
+      );
     },
   },
 });
 
-export const { listPostPublic, listPostPrivate, postPrivate } =
+export const { listPostPublic, listPostPrivate, postPrivate, deleteOnePost } =
   postSlice.actions;
 
 export default postSlice.reducer;

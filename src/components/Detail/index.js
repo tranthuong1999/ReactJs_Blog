@@ -9,7 +9,7 @@ import "./style.css";
 
 import { useParams } from "react-router-dom";
 
-function Detail(props) {
+function Detail() {
   let { id } = useParams();
 
   const postPrivate = useSelector((state) => state.posts.post);
@@ -25,13 +25,11 @@ function Detail(props) {
 
   return (
     <div className="container-detail">
-      <div className="detail-post">
-        <div
-          id="second-header"
-          dangerouslySetInnerHTML={{ __html: postPrivate?.content }}
-        />
-      </div>
-      {/* {postPrivate && <TableOfContent />} */}
+      <div
+        className="detail-post"
+        dangerouslySetInnerHTML={{ __html: postPrivate?.content }}
+      ></div>
+      {postPrivate && <TableOfContent />}
     </div>
   );
 }

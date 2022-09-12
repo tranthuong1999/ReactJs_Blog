@@ -22,8 +22,7 @@ function App() {
           <ProtectedRoute exact path="/post" component={Post} />
           <ProtectedRoute exact path="/content" component={Content} />
           <ProtectedRoute exact path="/create-post" component={CreatePost} />
-          {/* <ProtectedRoute exact path="/detail-post/:id" component={Detail} /> */}
-          <Route path="/detail-post/:id">
+          <Route exact path="/detail-post/:id">
             <Detail />
           </Route>
           <Route path="/login">

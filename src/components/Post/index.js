@@ -26,9 +26,6 @@ function PaperComponent(props) {
 export default function Post() {
   const dispatch = useDispatch();
   const token = localStorage.getItem("user");
-
-  console.log("token token post -------", token);
-
   const history = useHistory();
 
   useEffect(() => {
@@ -41,10 +38,7 @@ export default function Post() {
   };
 
   const handleDeletePost = (id) => {
-    deletePostPrivate(id, token);
-
-    // getListPostPrivate(token, dispatch);
-
+    deletePostPrivate(id, token, dispatch);
     setOpen(false);
     alert("Delete success");
   };
@@ -63,11 +57,11 @@ export default function Post() {
     setOpen(false);
   };
   const listPostPrivate = useSelector((state) => state.posts.postsPrivate);
-  console.log("listPostPrivate listPostPrivate-----------", listPostPrivate);
-
   return (
     <div className="container">
-      {listPostPrivate[0]?.map((post, index) => {
+      {listPostPrivate?.map((post, index) => {
+        console.log("Post ", post);
+        console.log("Post ", post.private);
         return (
           <div className="post" key={index}>
             <h1> {post.title}</h1>

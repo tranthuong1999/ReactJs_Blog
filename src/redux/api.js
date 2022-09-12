@@ -7,7 +7,12 @@ import {
   registerFail,
 } from "./authSlice";
 
-import { listPostPublic, listPostPrivate, postPrivate } from "./postSlice";
+import {
+  listPostPublic,
+  listPostPrivate,
+  postPrivate,
+  deleteOnePost,
+} from "./postSlice";
 import axios from "axios";
 
 const BASE_URL = "http://127.0.0.1:3001";
@@ -83,8 +88,6 @@ export const getPostPrivate = async (token, dispatch, id) => {
       },
     })
     .then((res) => {
-      console.log("Data get post---------", res.data.data);
-
       dispatch(postPrivate(res.data.data));
     })
     .catch((error) => {
@@ -92,7 +95,7 @@ export const getPostPrivate = async (token, dispatch, id) => {
     });
 };
 
-export const deletePostPrivate = async (id, token) => {
+export const deletePostPrivate = async (id, token, dispatch) => {
   axios
     .delete(`${BASE_URL}/api/posts/${id}`, {
       headers: {
@@ -101,6 +104,7 @@ export const deletePostPrivate = async (id, token) => {
     })
     .then((res) => {
       console.log("Delete Success---------");
+      dispatch(deleteOnePost(id));
     })
     .catch((error) => {
       console.error(error);
